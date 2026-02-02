@@ -267,6 +267,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "hasCacheChange": MessageLookupByLibrary.simpleMessage("是否缓存修改"),
     "hideOnMinimize": MessageLookupByLibrary.simpleMessage("最小化时隐藏"),
     "hideOnMinimizeDesc": MessageLookupByLibrary.simpleMessage("最小化时隐藏到托盘"),
+    "showTrayIcon": MessageLookupByLibrary.simpleMessage("显示托盘图标"),
+    "showTrayIconDesc": MessageLookupByLibrary.simpleMessage("在系统托盘显示图标"),
     "host": MessageLookupByLibrary.simpleMessage("主机"),
     "hostsDesc": MessageLookupByLibrary.simpleMessage("追加Hosts"),
     "hotkeyConflict": MessageLookupByLibrary.simpleMessage("快捷键冲突"),

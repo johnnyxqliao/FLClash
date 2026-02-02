@@ -403,6 +403,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "hideOnMinimizeDesc": MessageLookupByLibrary.simpleMessage(
       "Hide to tray when minimized",
     ),
+    "showTrayIcon": MessageLookupByLibrary.simpleMessage("Show Tray Icon"),
+    "showTrayIconDesc": MessageLookupByLibrary.simpleMessage(
+      "Show icon in system tray",
+    ),
     "hotkeyConflict": MessageLookupByLibrary.simpleMessage("Hotkey conflict"),
     "hotkeyManagement": MessageLookupByLibrary.simpleMessage(
       "Hotkey Management",

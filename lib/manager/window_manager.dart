@@ -86,7 +86,10 @@ class _WindowContainerState extends ConsumerState<WindowManager>
     final hideOnMinimize = ref.read(
       appSettingProvider.select((state) => state.hideOnMinimize),
     );
-    if (hideOnMinimize) {
+    final showTrayIcon = ref.read(
+      appSettingProvider.select((state) => state.showTrayTitle),
+    );
+    if (hideOnMinimize && (system.isMacOS || showTrayIcon)) {
       windowManager.hide();
     }
     appController.savePreferencesDebounce();

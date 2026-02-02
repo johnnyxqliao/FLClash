@@ -876,7 +876,11 @@ extension SystemControllerExt on AppController {
     if (_ref.read(backBlockProvider)) {
       return;
     }
-    if (_ref.read(appSettingProvider).minimizeOnExit) {
+    final showTrayIcon = _ref.read(
+      appSettingProvider.select((state) => state.showTrayTitle),
+    );
+    if (_ref.read(appSettingProvider).minimizeOnExit &&
+        (system.isMacOS || showTrayIcon)) {
       if (system.isDesktop) {
         await preferences.saveConfig(config);
       }
@@ -956,6 +960,11 @@ extension SystemControllerExt on AppController {
   }
 
   Future<void> updateTray() async {
+    final showTrayIcon = _ref.read(appSettingProvider).showTrayTitle;
+    if (!system.isMacOS && !showTrayIcon) {
+      await tray?.destroy();
+      return;
+    }
     tray?.update(
       trayState: _ref.read(trayStateProvider),
       traffic: _ref.read(

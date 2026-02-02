@@ -282,6 +282,36 @@ class HideOnMinimizeItem extends ConsumerWidget {
   }
 }
 
+class ShowTrayItem extends ConsumerWidget {
+  const ShowTrayItem({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final showTrayTitle = ref.watch(
+      appSettingProvider.select((state) => state.showTrayTitle),
+    );
+    final label = system.isMacOS 
+        ? appLocalizations.showTrayTitle 
+        : appLocalizations.showTrayIcon;
+    final subLabel = system.isMacOS 
+        ? '' 
+        : appLocalizations.showTrayIconDesc;
+
+    return ListItem.switchItem(
+      title: Text(label),
+      subtitle: subLabel.isNotEmpty ? Text(subLabel) : null,
+      delegate: SwitchDelegate(
+        value: showTrayTitle,
+        onChanged: (bool value) {
+          ref
+              .read(appSettingProvider.notifier)
+              .update((state) => state.copyWith(showTrayTitle: value));
+        },
+      ),
+    );
+  }
+}
+
 class ApplicationSettingView extends StatelessWidget {
   const ApplicationSettingView({super.key});
 
@@ -296,6 +326,7 @@ class ApplicationSettingView extends StatelessWidget {
       MinimizeItem(),
       if (system.isDesktop) ...[
         HideOnMinimizeItem(),
+        ShowTrayItem(),
         AutoLaunchItem(),
         SilentLaunchItem(),
       ],

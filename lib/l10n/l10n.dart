@@ -359,6 +359,26 @@ class AppLocalizations {
     );
   }
 
+  /// `Show Tray Icon`
+  String get showTrayIcon {
+    return Intl.message(
+      'Show Tray Icon',
+      name: 'showTrayIcon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show icon in system tray`
+  String get showTrayIconDesc {
+    return Intl.message(
+      'Show icon in system tray',
+      name: 'showTrayIconDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Auto launch`
   String get autoLaunch {
     return Intl.message('Auto launch', name: 'autoLaunch', desc: '', args: []);
