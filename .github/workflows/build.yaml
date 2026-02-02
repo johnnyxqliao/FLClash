@@ -199,6 +199,7 @@ jobs:
       - name: Generate sha256
         if: env.IS_STABLE == 'true'
         run: |
+          mkdir -p ./dist
           cd ./dist
           for file in $(find . -type f -not -name "*.sha256"); do
             sha256sum "$file" > "${file}.sha256"
