@@ -50,12 +50,29 @@ jobs:
 
       - name: Setup Android Signing
         if: startsWith(matrix.platform,'android')
-        run: |
-          echo "${{ secrets.KEYSTORE }}" | base64 --decode > android/app/keystore.jks
-          echo "${{ secrets.SERVICE_JSON }}" | base64 --decode > android/app/google-services.json
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/local.properties
-          echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/local.properties
-          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/local.properties
+          if [ -n "${{ secrets.KEYSTORE }}" ]; then
+            echo "${{ secrets.KEYSTORE }}" | base64 --decode > android/app/keystore.jks
+          fi
+          
+          # Check if google-services.json is empty or invalid, and provide a mock if so
+          if [ -n "${{ secrets.SERVICE_JSON }}" ]; then
+            echo "${{ secrets.SERVICE_JSON }}" | base64 --decode > android/app/google-services.json
+          fi
+          
+          if [ ! -s android/app/google-services.json ]; then
+            echo "google-services.json is empty (secret missing). Using mock configuration."
+            echo '{"project_info":{"project_number":"123456789012","project_id":"mock-project-id","storage_bucket":"mock-project-id.appspot.com"},"client":[{"client_info":{"mobilesdk_app_id":"1:123456789012:android:abcdef1234567890","android_client_info":{"package_name":"com.follow.clash"}},"api_key":[{"current_key":"mock-api-key"}]}],"configuration_version":"1"}' > android/app/google-services.json
+          fi
+
+          if [ -n "${{ secrets.KEY_ALIAS }}" ]; then
+            echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/local.properties
+          fi
+          if [ -n "${{ secrets.STORE_PASSWORD }}" ]; then
+            echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/local.properties
+          fi
+          if [ -n "${{ secrets.KEY_PASSWORD }}" ]; then
+            echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/local.properties
+          fi
 
       - name: Setup Go
         uses: actions/setup-go@v5
