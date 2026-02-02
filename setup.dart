@@ -7,6 +7,8 @@ import 'package:args/command_runner.dart';
 import 'package:crypto/crypto.dart';
 import 'package:path/path.dart';
 
+String get current => Directory.current.path;
+
 enum Target { windows, linux, android, macos }
 
 extension TargetExt on Target {
