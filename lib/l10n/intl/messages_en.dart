@@ -398,6 +398,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "host": MessageLookupByLibrary.simpleMessage("Host"),
     "hostsDesc": MessageLookupByLibrary.simpleMessage("Add Hosts"),
+    "hostsDesc": MessageLookupByLibrary.simpleMessage("Add Hosts"),
+    "hideOnMinimize": MessageLookupByLibrary.simpleMessage("Hide on minimize"),
+    "hideOnMinimizeDesc": MessageLookupByLibrary.simpleMessage(
+      "Hide to tray when minimized",
+    ),
     "hotkeyConflict": MessageLookupByLibrary.simpleMessage("Hotkey conflict"),
     "hotkeyManagement": MessageLookupByLibrary.simpleMessage(
       "Hotkey Management",

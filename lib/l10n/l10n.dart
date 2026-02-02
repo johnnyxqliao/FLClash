@@ -339,6 +339,26 @@ class AppLocalizations {
     );
   }
 
+  /// `Hide on minimize`
+  String get hideOnMinimize {
+    return Intl.message(
+      'Hide on minimize',
+      name: 'hideOnMinimize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hide to tray when minimized`
+  String get hideOnMinimizeDesc {
+    return Intl.message(
+      'Hide to tray when minimized',
+      name: 'hideOnMinimizeDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Auto launch`
   String get autoLaunch {
     return Intl.message('Auto launch', name: 'autoLaunch', desc: '', args: []);
