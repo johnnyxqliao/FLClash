@@ -59,6 +59,12 @@ jobs:
             echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/local.properties
           fi
 
+      - name: Install Inno Setup
+        if: matrix.platform == 'windows'
+        run: |
+          choco install innosetup --no-progress
+          echo "C:\Program Files (x86)\Inno Setup 6" >> $env:GITHUB_PATH
+
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
