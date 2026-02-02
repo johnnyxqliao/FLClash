@@ -1,3 +1,27 @@
+## v1.0.6
+
+- Fix build error
+
+## v1.0.5
+
+- Fix build error
+
+## v1.0.4
+
+- Fix build error
+
+## v1.0.3
+
+- Fix build error
+
+## v1.0.2
+
+- modify
+
+## v1.0.1
+
+- Add hide to tray feature
+
 ## v0.8.92
 
 - Add sqlite store
