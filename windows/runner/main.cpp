@@ -10,6 +10,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   // Single Instance Check
   const wchar_t* MUTEX_NAME = L"Global\\FlClashInstanceMutex";
   HANDLE hMutex = CreateMutex(nullptr, TRUE, MUTEX_NAME);
+  if (hMutex == nullptr) {
+    return EXIT_FAILURE;
+  }
   if (GetLastError() == ERROR_ALREADY_EXISTS) {
       HWND hwnd = FindWindow(L"FLUTTER_RUNNER_WIN32_WINDOW", L"FlClash");
       if (hwnd != NULL) {
