@@ -290,9 +290,7 @@ class ShowTrayItem extends ConsumerWidget {
     final showTrayTitle = ref.watch(
       appSettingProvider.select((state) => state.showTrayTitle),
     );
-    final label = system.isMacOS 
-        ? appLocalizations.showTrayTitle 
-        : appLocalizations.showTrayIcon;
+    final label = appLocalizations.showTrayIcon;
     final subLabel = system.isMacOS 
         ? '' 
         : appLocalizations.showTrayIconDesc;
